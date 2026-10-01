@@ -6,7 +6,7 @@
 | 2 Tokens & base | ✅ | 2026-09-30 | 2026-10-01 | [complete](reviews/stage-2.md) |
 | 3 Layout & responsive | ✅ | 2026-10-01 | 2026-10-01 | [complete vs BRIEF; design gaps listed](reviews/stage-3.md) |
 | 4 Print / PDF | ✅ | 2026-10-01 | 2026-10-01 | exported: 2 pages, no split roles |
-| 5 Polish | ⬜ | | | |
+| 5 Polish | ✅ | 2026-10-01 | 2026-10-01 | [Lighthouse 98/100/100/100](reviews/stage-5.md) |
 | 6 Deploy | 🟡 | 2026-10-01 | | live on GitHub Pages; README to write |
 
 ## Current stage notes
@@ -14,7 +14,6 @@ Phase 0 decisions pending: GitHub link · public status value · photo · PDF fi
 
 ## Blockers
 - Editor overwrote styles.css from a stale tab twice — reload before saving
-- noindex → Lighthouse SEO 63; decide before Stage 5 (remove, or accept exception)
 - Stage 1: W3C validator run outstanding (no Java locally — use validator.w3.org/nu)
 - Carried over: photo webp files (Stage 3); status icon must switch via CSS per data-status (Stage 3)
 - Real content: experience + education in (2026-09-30); skills updated 2026-09-30; summary still to verify
@@ -45,3 +44,4 @@ Phase 0 decisions pending: GitHub link · public status value · photo · PDF fi
 - 2026-10-01 — Stage 4: @media print + @page A4 (14/16/16mm, footer name + page x/y). Header grid avatar | name/title/status | contacts; skills 2-col table; roles year | content with rule above, break-inside: avoid; screen-only bits hidden. Exported via Chrome to tejasvi-naik-resume.pdf — exactly 2 pages, no phone number. Contacts now show URLs; GitHub → tejasvinaikbg. Tablet: summary widened to --measure (64ch).
 - 2026-10-01 — Repo: tejasvinaikbg.github.io (public). Tejasvi_Naik.pdf (has phone) and working notes git-ignored; repo-local git identity set to personal email.
 - 2026-10-01 — Pushed to github.com/tejasvinaikbg/tejasvinaikbg.github.io (public). GitHub Pages built from main: https://tejasvinaikbg.github.io/ — 200 over HTTPS (HSTS), CSS + fonts load, PDF link 200. Stage 6 left: README (what, how to run, Lighthouse scores, what you learned).
+- 2026-10-01 — Stage 5: noindex removed (user decision), description/canonical, OG + twitter tags, og-image 1200x630, favicon.ico/svg/apple-touch-icon, theme-color. Unused icon SVGs + duplicate plan removed. Live Lighthouse mobile: 98 / 100 / 100 / 100.
