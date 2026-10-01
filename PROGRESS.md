@@ -7,7 +7,7 @@
 | 3 Layout & responsive | ✅ | 2026-10-01 | 2026-10-01 | [complete vs BRIEF; design gaps listed](reviews/stage-3.md) |
 | 4 Print / PDF | ✅ | 2026-10-01 | 2026-10-01 | exported: 2 pages, no split roles |
 | 5 Polish | ⬜ | | | |
-| 6 Deploy | ⬜ | | | |
+| 6 Deploy | 🟡 | 2026-10-01 | | live on GitHub Pages; README to write |
 
 ## Current stage notes
 Phase 0 decisions pending: GitHub link · public status value · photo · PDF file · skills content (see design/PHASE-PLAN.md)
@@ -44,3 +44,4 @@ Phase 0 decisions pending: GitHub link · public status value · photo · PDF fi
 - 2026-10-01 — Stage 3 design gaps fixed: role spacing (head group, 12px gaps, 8px bullets, hollow markers), muted/mono secondary text, weights 500, education on the rail, literal sizes tokenised. See reviews/stage-3.md follow-up.
 - 2026-10-01 — Stage 4: @media print + @page A4 (14/16/16mm, footer name + page x/y). Header grid avatar | name/title/status | contacts; skills 2-col table; roles year | content with rule above, break-inside: avoid; screen-only bits hidden. Exported via Chrome to tejasvi-naik-resume.pdf — exactly 2 pages, no phone number. Contacts now show URLs; GitHub → tejasvinaikbg. Tablet: summary widened to --measure (64ch).
 - 2026-10-01 — Repo: tejasvinaikbg.github.io (public). Tejasvi_Naik.pdf (has phone) and working notes git-ignored; repo-local git identity set to personal email.
+- 2026-10-01 — Pushed to github.com/tejasvinaikbg/tejasvinaikbg.github.io (public). GitHub Pages built from main: https://tejasvinaikbg.github.io/ — 200 over HTTPS (HSTS), CSS + fonts load, PDF link 200. Stage 6 left: README (what, how to run, Lighthouse scores, what you learned).
