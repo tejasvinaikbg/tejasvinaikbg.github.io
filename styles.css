@@ -81,10 +81,9 @@
   /* breakpoint 1024px = 64rem — media queries can't read custom properties */
 }
 
-/* DARK — the values in one place, reused twice below */
+/* DARK — only the colour tokens change */
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    /* ⭐ system dark — unless the user chose light */
+  :root {
     --bg: #0e1114;
     --ink: #e7eaed;
     --muted: #9ba4ae;
@@ -96,24 +95,6 @@
     --tint: #17302b;
     --link-hover: #8fe0cc; /* lighter than --accent: hover brightens on dark */
   }
-}
-:root[data-theme="dark"] {
-  /* ⭐ the user chose dark */
-  color-scheme: dark;
-  --bg: #0e1114;
-  --ink: #e7eaed;
-  --muted: #9ba4ae;
-  --rule: #2b3137;
-  --accent: #5ccfb4;
-  --accent-ink: #0e1114;
-  --ok: #4cc27a;
-  --warn: #e0a53a;
-  --tint: #17302b;
-  --link-hover: #8fe0cc;
-}
-:root[data-theme="light"] {
-  /* ⭐ the user chose light — colours come from the base :root */
-  color-scheme: light;
 }
 
 /* ================================ reset ================================= */
@@ -567,10 +548,8 @@ a:hover {
 }
 
 @media print {
-  /* listed for every theme variant so print wins over the dark-mode blocks */
-  :root,
-  :root:not([data-theme="light"]),
-  :root[data-theme="dark"] {
+  /* same specificity as the dark block and later in the file, so print wins */
+  :root {
     color-scheme: light;
     --bg: #fff;
     --ink: #000;
@@ -629,6 +608,12 @@ a:hover {
     grid-row: 1 / span 4;
     margin: 0;
     outline: none;
+    background: none; /* "Background graphics" is off by default in print */
+    border: var(--hairline) solid var(--ink);
+  }
+
+  .profile__initials {
+    color: var(--ink);
   }
 
   .profile__name,

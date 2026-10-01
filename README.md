@@ -58,10 +58,7 @@ styles.css               tokens → reset → base → layout → components →
 tejasvi-naik-resume.pdf  exported from the print stylesheet
 favicon.ico
 assets/                  share image, favicons, status icons (CSS masks)
-design/                  mockups, token sheet and the build plan
-reviews/                 a review per stage against the brief
-BRIEF.md                 requirements and acceptance criteria
-PROGRESS.md              stage tracker and log
+.htmlvalidate.json       validator settings (matches Prettier's output)
 ```
 
 ## Deploy
