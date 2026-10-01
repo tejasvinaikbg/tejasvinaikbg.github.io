@@ -7,7 +7,7 @@
 | 3 Layout & responsive | ✅ | 2026-10-01 | 2026-10-01 | [complete vs BRIEF; design gaps listed](reviews/stage-3.md) |
 | 4 Print / PDF | ✅ | 2026-10-01 | 2026-10-01 | exported: 2 pages, no split roles |
 | 5 Polish | ✅ | 2026-10-01 | 2026-10-01 | [Lighthouse 98/100/100/100](reviews/stage-5.md) |
-| 6 Deploy | 🟡 | 2026-10-01 | | live on GitHub Pages; README to write |
+| 6 Deploy | ✅ | 2026-10-01 | 2026-10-01 | live + README ("What I learned" is a draft to rewrite) |
 
 ## Current stage notes
 Phase 0 decisions pending: GitHub link · public status value · photo · PDF file · skills content (see design/PHASE-PLAN.md)
@@ -45,3 +45,4 @@ Phase 0 decisions pending: GitHub link · public status value · photo · PDF fi
 - 2026-10-01 — Repo: tejasvinaikbg.github.io (public). Tejasvi_Naik.pdf (has phone) and working notes git-ignored; repo-local git identity set to personal email.
 - 2026-10-01 — Pushed to github.com/tejasvinaikbg/tejasvinaikbg.github.io (public). GitHub Pages built from main: https://tejasvinaikbg.github.io/ — 200 over HTTPS (HSTS), CSS + fonts load, PDF link 200. Stage 6 left: README (what, how to run, Lighthouse scores, what you learned).
 - 2026-10-01 — Stage 5: noindex removed (user decision), description/canonical, OG + twitter tags, og-image 1200x630, favicon.ico/svg/apple-touch-icon, theme-color. Unused icon SVGs + duplicate plan removed. Live Lighthouse mobile: 98 / 100 / 100 / 100.
+- 2026-10-01 — Stage 6: README.md added (what it is, Lighthouse 98/100/100/100, run/validate/export steps, structure, deploy, draft 'What I learned'). All six stages done.
