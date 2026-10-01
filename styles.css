@@ -1,0 +1,768 @@
+/* LIGHT — the default */
+:root {
+  color-scheme: light dark; /* browser UI follows the OS */
+  --bg: #f5f6f7;
+  --ink: #101418;
+  --muted: #4e5761;
+  --rule: #d3d8dd;
+  --accent: #0a6b5c;
+  --accent-ink: #ffffff;
+  --ok: #1f8a4c;
+  --warn: #b7791f;
+  --tint: #dcebe7;
+  --link-hover: #08564a;
+
+  /* FONTS — web font first, then system fallbacks */
+  --font-sans:
+    "Schibsted Grotesk", system-ui, -apple-system, "Segoe UI", Roboto,
+    sans-serif;
+  --font-mono:
+    "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  /* TYPE SCALE — rem, base 16px */
+  --text-label: 0.8125rem; /* 13px — SKILLS, EXPERIENCE, skill areas */
+  --text-meta: 0.75rem; /* 12px — end year under the timeline year */
+  --text-body: 1rem; /* 16px */
+  --text-role: 1.25rem; /* 20px — role title */
+  --text-title: 1.375rem; /* 22px — job title under the name */
+  --text-year: 2rem; /* 32px — timeline year */
+  --text-name-sm: 2.75rem; /* 44px — name, small screens */
+  --text-name: 4.75rem; /* 76px — name, desktop */
+  --leading: 1.55;
+  --leading-tight: 1;
+  --leading-name: 0.95;
+  --measure: 64ch; /* bullets */
+
+  /* SPACING — 4 · 8 · 12 · 16 · 24 · 40 · 56 · 72 · 96 px */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2.5rem;
+  --space-7: 3.5rem;
+  --space-8: 4.5rem;
+  --space-9: 6rem;
+
+  /* LETTER SPACING */
+  --tracking-labels: 0.08em;
+  --tracking-initials: 0.02em;
+  --tracking-name: -0.035em;
+
+  /* SHAPE */
+  --radius: 0;
+  --radius-button: 0.25rem; /* 4px */
+  --focus-width: 2px;
+  --focus-offset: 3px;
+  --hit: 3rem; /* 48px minimum tap target */
+  --icon: 1.25rem; /* 20px — contact, button, section icons */
+  --icon-sm: 1rem; /* 16px — status icon */
+  --marker: 0.6875rem; /* 11px timeline square */
+  --hairline: 1px;
+
+  /* LAYOUT — mobile values; wider screens override these in Stage 3 */
+  /* fluid: 40 / 24 / 56px on phones, growing to 96px all round on wide screens */
+  --pad: clamp(var(--space-6), 6vw, var(--space-9))
+    clamp(var(--space-5), 5vw, var(--space-9))
+    clamp(var(--space-7), 6vw, var(--space-9));
+  --gap: clamp(4rem, 6vw, var(--space-9)); /* 64px → 96px */
+  --role-gap: var(--space-7); /* 56px between roles */
+  --rail: 3.75rem; /* 60px timeline rail; 112px (7rem) when wide */
+  --photo: 7.5rem; /* 120px; 160px (10rem) on desktop */
+  --sidebar-max: 23.75rem; /* 380px */
+  --content-max: 78rem; /* 1248px */
+  --year: var(
+    --text-body
+  ); /* 16px — timeline year, small screens; 32px (2rem) on desktop */
+  /* breakpoint 1024px = 64rem — media queries can't read custom properties */
+}
+
+/* DARK — the values in one place, reused twice below */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    /* ⭐ system dark — unless the user chose light */
+    --bg: #0e1114;
+    --ink: #e7eaed;
+    --muted: #9ba4ae;
+    --rule: #2b3137;
+    --accent: #5ccfb4;
+    --accent-ink: #0e1114;
+    --ok: #4cc27a;
+    --warn: #e0a53a;
+    --tint: #17302b;
+    --link-hover: #8fe0cc; /* lighter than --accent: hover brightens on dark */
+  }
+}
+:root[data-theme="dark"] {
+  /* ⭐ the user chose dark */
+  color-scheme: dark;
+  --bg: #0e1114;
+  --ink: #e7eaed;
+  --muted: #9ba4ae;
+  --rule: #2b3137;
+  --accent: #5ccfb4;
+  --accent-ink: #0e1114;
+  --ok: #4cc27a;
+  --warn: #e0a53a;
+  --tint: #17302b;
+  --link-hover: #8fe0cc;
+}
+:root[data-theme="light"] {
+  /* ⭐ the user chose light — colours come from the base :root */
+  color-scheme: light;
+}
+
+/* ================================ reset ================================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+img,
+svg {
+  max-width: 100%;
+}
+
+img {
+  display: block;
+}
+
+/* list markers only where they carry meaning (bullets); the rest are plain */
+ul,
+ol {
+  list-style: none;
+}
+
+/* ================================= base ================================= */
+body {
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  line-height: var(--leading);
+  padding: var(--pad);
+}
+
+h1 {
+  font-size: var(--text-name-sm);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-tight);
+}
+
+h3 {
+  font-size: var(--text-role);
+  font-weight: var(--weight-semibold);
+}
+
+h4 {
+  font-size: var(--text-body);
+  font-weight: var(--weight-semibold);
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none; /* underline any links added inside running text */
+}
+
+a:hover {
+  color: var(--link-hover);
+}
+
+:focus-visible {
+  outline: var(--focus-width) solid var(--accent);
+  outline-offset: var(--focus-offset);
+}
+
+/* ================================ layout ================================ */
+.page {
+  max-inline-size: var(--content-max);
+  margin-inline: auto;
+  display: grid;
+  gap: var(--gap);
+  align-items: start;
+}
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6); /* 40px between intro, contact, button, skills */
+}
+
+.profile__intro {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3); /* 12px — design uses 14px; nearest token */
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  container-type: inline-size; /* the timeline sizes itself from this column */
+}
+
+/* two columns once the content column gets ~480px+ (pad and gap are fluid) */
+@media (width >= 64rem) {
+  :root {
+    --photo: 10rem;
+  }
+
+  .page {
+    grid-template-columns: minmax(0, var(--sidebar-max)) minmax(0, 1fr);
+  }
+}
+
+/* @media (width >= 56.25rem) and (height >= 62rem) {
+  .profile {
+    position: sticky;
+    top: var(--space-9);
+  }
+} */
+
+/* wide content column → wide rail and big years (112px, 32px) */
+@container (width >= 40rem) {
+  .role,
+  .education__item {
+    --rail: 7rem;
+    --year: var(--text-year);
+  }
+}
+
+/* ============================== components ============================== */
+.profile__title {
+  font-size: var(--text-title);
+}
+
+.profile__name {
+  font-size: clamp(var(--text-name-sm), 1.5rem + 3vw, var(--text-name));
+  line-height: var(--leading-name);
+  letter-spacing: var(--tracking-name);
+  text-wrap: balance;
+}
+
+.profile__summary {
+  max-inline-size: var(--measure); /* fills tablet width up to 64ch; the sidebar limits it on desktop */
+  color: var(--muted);
+}
+
+.role__project,
+.role__tech {
+  max-inline-size: var(--measure);
+}
+
+.role__bullets {
+  max-inline-size: var(--measure);
+  padding-inline-start: var(--space-5); /* room for the bullet marker */
+  list-style: circle;
+}
+
+.role__bullets li + li {
+  margin-block-start: var(--space-2); /* 8px between bullets */
+}
+
+.role__bullets ::marker {
+  color: var(--muted);
+}
+
+/* icon + text on one line */
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-weight: var(--weight-medium);
+}
+
+.status__icon,
+.contact__icon {
+  flex-shrink: 0;
+}
+
+.status::before {
+  content: "";
+  inline-size: var(--space-2);
+  block-size: var(--space-2);
+  border-radius: 50%;
+  background-color: var(--muted);
+}
+
+.status[data-status="available"]::before {
+  background: var(--ok);
+}
+.status[data-status="serving"]::before {
+  background: var(--warn);
+}
+.status[data-status="hidden"] {
+  display: none;
+}
+
+.status__icon {
+  inline-size: var(--icon-sm);
+  block-size: var(--icon-sm);
+  background: currentColor; /* the icon's colour */
+  mask: url("assets/status-notice.svg") center / contain no-repeat;
+}
+
+.status[data-status="available"] .status__icon {
+  mask-image: url("assets/status-available.svg");
+}
+.status[data-status="serving"] .status__icon {
+  mask-image: url("assets/status-serving.svg");
+}
+
+.profile__avatar {
+  inline-size: var(--photo);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: var(--tint);
+  outline: var(--focus-width) solid var(--accent);
+  outline-offset: var(--focus-offset);
+  display: grid;
+  place-items: center;
+  margin: var(--space-2);
+}
+
+.profile__initials,
+.profile__photo {
+  grid-area: 1 / 1;
+}
+
+.profile__initials {
+  color: var(--accent);
+  font-size: calc(var(--photo) * 0.32);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-initials);
+}
+
+.profile__photo {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+}
+
+.role {
+  display: grid;
+  grid-template-columns: var(--rail) minmax(0, 1fr);
+}
+
+.role article {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3); /* 12px between head, project, bullets, tech */
+  position: relative;
+  border-inline-start: var(--hairline) solid var(--rule);
+  padding-inline-start: var(--space-5);
+  padding-block-end: var(--role-gap);
+}
+
+.role article::before {
+  content: "";
+  position: absolute;
+  inset-block-start: calc(var(--marker) / 2);
+  inset-inline-start: calc(var(--marker) / -2); /* centred on the 1px line */
+  inline-size: var(--marker);
+  block-size: var(--marker);
+  background-color: var(--bg);
+  box-shadow: inset 0 0 0 1.5px var(--muted); /* hollow = past role */
+}
+
+.role--current article::before {
+  background: var(--accent);
+  box-shadow: none;
+}
+
+.role__years {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding-inline-end: var(--space-4);
+}
+.role__start,
+.education__year {
+  font-family: var(--font-mono);
+  font-size: var(--year);
+  font-weight: var(--weight-medium);
+  color: var(--accent);
+  line-height: 1;
+}
+.role__end {
+  font-family: var(--font-mono);
+  font-size: var(--text-meta);
+  color: var(--muted);
+}
+
+/* title, then company and dates tight underneath */
+.role__head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.role__company,
+.role__meta,
+.education__meta {
+  color: var(--muted);
+}
+
+/* education sits on the same rail, without the line or marker */
+.education__item {
+  display: grid;
+  grid-template-columns: var(--rail) minmax(0, 1fr);
+}
+
+.education__year {
+  color: var(--muted);
+}
+
+.role:last-child article {
+  padding-block-end: 0;
+}
+
+.contact a {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-block-size: var(--hit);
+  color: var(--ink);
+}
+
+.contact a:hover {
+  color: var(--accent);
+}
+
+.contact {
+  border-block-start: 1px solid var(--rule);
+}
+.contact li {
+  border-block-end: 1px solid var(--rule);
+}
+
+.contact__icon {
+  inline-size: var(--icon);
+  block-size: var(--icon);
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-block-size: var(--hit); /* 48px */
+  padding-inline: var(--space-5); /* 24px (design 20px; nearest token) */
+  border-radius: var(--radius-button); /* 4px */
+  background: var(--ink);
+  color: var(--bg);
+  font-weight: var(--weight-semibold);
+  align-self: flex-start; /* .profile is a flex column — don't stretch */
+}
+
+.button:hover {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+.button__icon {
+  flex-shrink: 0;
+}
+
+/* SKILLS — label above, skills as one comma-separated line */
+.skills {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4); /* 16px heading → list (design 20px) */
+}
+
+.skills__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1); /* 4px between a group label and its skills */
+}
+
+.skills__list dd + dt {
+  margin-block-start: var(--space-3); /* 4 + 12 = 16px between groups */
+}
+
+/* keep the <ul> for meaning, show it as an inline list */
+.skills__list li {
+  display: inline;
+}
+
+.skills__list li:not(:last-child)::after {
+  content: ", ";
+}
+
+/* header row + timeline, 40px apart (design 32px; nearest token) */
+.experience,
+.education {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+/* icon · LABEL ───────── range */
+.section-head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  color: var(--muted);
+}
+
+.section-head__icon {
+  flex-shrink: 0;
+}
+
+/* the h2 takes the leftover width and draws the rule after its text */
+.section-head h2 {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.section-head h2::after {
+  content: "";
+  flex: 1;
+  border-block-start: 1px solid var(--rule);
+}
+
+.section-head__range {
+  white-space: nowrap;
+}
+/* ============================== utilities =============================== */
+/* mono label — skill areas; add .label--caps for section headings */
+.label {
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+}
+
+.label--caps {
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-labels);
+  text-transform: uppercase;
+}
+
+/* ================================ print ================================= */
+/* the PDF: A4, black on white, header across the top, no timeline rail */
+@page {
+  size: A4;
+  margin: 14mm 16mm 16mm;
+
+  /* page footer — Chrome prints these; other browsers ignore them */
+  @bottom-left {
+    content: "Tejasvi Naik B G — Resume";
+    font: 7pt "Geist Mono", monospace;
+  }
+
+  @bottom-right {
+    content: counter(page) " / " counter(pages);
+    font: 7pt "Geist Mono", monospace;
+  }
+}
+
+@media print {
+  /* listed for every theme variant so print wins over the dark-mode blocks */
+  :root,
+  :root:not([data-theme="light"]),
+  :root[data-theme="dark"] {
+    color-scheme: light;
+    --bg: #fff;
+    --ink: #000;
+    --muted: #333;
+    --rule: #999;
+    --accent: #000;
+    --tint: #e6e6e6;
+
+    --text-body: 9pt;
+    --text-label: 7pt;
+    --text-meta: 7pt;
+    --text-role: 10pt;
+    --text-title: 11pt;
+    --text-name-sm: 22pt;
+    --text-name: 22pt;
+    --text-year: 13pt;
+    --leading: 1.35;
+    --photo: 20mm;
+    --pad: 0;
+    --gap: 4mm;
+    --role-gap: 0;
+    --measure: none;
+  }
+
+  /* ---------- hide what only makes sense on screen ---------- */
+  .button,
+  .status::before,
+  .status__icon,
+  .contact__icon,
+  .section-head__icon,
+  .section-head__range,
+  .section-head h2::after,
+  .role article::before {
+    display: none;
+  }
+
+  a {
+    color: var(--ink);
+  }
+
+  /* ---------- header: avatar | name, title, status | contacts ---------- */
+  .profile {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    column-gap: 6mm;
+    row-gap: 1mm;
+    align-items: center;
+  }
+
+  .profile__intro {
+    display: contents; /* its children join the .profile grid */
+  }
+
+  .profile__avatar {
+    grid-column: 1;
+    grid-row: 1 / span 4;
+    margin: 0;
+    outline: none;
+  }
+
+  .profile__name,
+  .profile__title,
+  .profile__location,
+  .status {
+    grid-column: 2;
+  }
+
+  .profile__name {
+    grid-row: 1;
+  }
+
+  .profile__title {
+    grid-row: 2;
+  }
+
+  .profile__location {
+    grid-row: 3;
+  }
+
+  .status {
+    grid-row: 4;
+    font-weight: var(--weight-regular);
+  }
+
+  .contact {
+    grid-column: 3;
+    grid-row: 1 / span 4;
+    border: 0;
+    font-family: var(--font-mono);
+    font-size: var(--text-label);
+    text-align: end;
+  }
+
+  .contact li {
+    border: 0;
+  }
+
+  .contact a {
+    display: block;
+    min-block-size: 0;
+  }
+
+  .profile__summary,
+  .skills {
+    grid-column: 1 / -1;
+  }
+
+  .profile__summary {
+    border-block-start: var(--hairline) solid var(--ink);
+    padding-block-start: 3mm;
+    margin-block-start: 2mm;
+    color: var(--ink);
+  }
+
+  /* ---------- skills: two-column table ---------- */
+  .skills {
+    margin-block-start: 3mm;
+  }
+
+  .skills__list {
+    display: grid;
+    grid-template-columns: 34mm minmax(0, 1fr);
+    gap: 0.5mm 0;
+  }
+
+  .skills__list dd + dt {
+    margin-block-start: 0;
+  }
+
+  /* ---------- experience: year | role, rule above each role ---------- */
+  .content,
+  .experience,
+  .education {
+    gap: 3mm;
+  }
+
+  .section-head {
+    color: var(--ink);
+    break-after: avoid;
+  }
+
+  .role,
+  .education__item {
+    border-block-start: var(--hairline) solid var(--ink);
+    padding-block-start: 2mm;
+    break-inside: avoid; /* never split a role across pages */
+  }
+
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 3mm;
+  }
+
+  .role article {
+    border: 0;
+    padding: 0;
+    gap: 1mm;
+  }
+
+  /* "Senior Software Engineer — TAO Digital India" on one line */
+  .role__head {
+    flex-direction: row;
+    flex-wrap: wrap;
+    column-gap: 0.25em;
+    row-gap: 0;
+    align-items: baseline;
+  }
+
+  .role__company {
+    color: var(--ink);
+    font-size: var(--text-role);
+    font-weight: var(--weight-semibold);
+  }
+
+  .role__company::before {
+    content: "— ";
+  }
+
+  .role__meta {
+    flex-basis: 100%;
+  }
+
+  .role__bullets {
+    list-style: disc;
+  }
+
+  .role__bullets li + li {
+    margin-block-start: 0.5mm;
+  }
+
+  .role__bullets ::marker {
+    color: var(--ink);
+  }
+}

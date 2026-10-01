@@ -1,0 +1,11 @@
+# OS
+.DS_Store
+
+# private — the original resume PDF contains a phone number
+Tejasvi_Naik.pdf
+
+# working notes, not part of the site
+CLAUDE.md
+DESIGN-PROMPT.md
+resume-PHASE-PLAN.md
+.claude/
